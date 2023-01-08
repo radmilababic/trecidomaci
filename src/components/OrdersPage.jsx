@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getOrders } from '../api'
+import Navbar from './Navbar'
 import Pagination from './Pagination'
 import Table from './Table'
 
@@ -43,21 +44,24 @@ export default function OrdersPage() {
     }, [email, page])
 
     return (
-        <div className='container'>
-            <h1 className='text-center m-3'>Orders</h1>
-            <div className='m-2'>
-                <input type="text" className='form-control' placeholder='Search' value={email} onChange={e => {
-                    setEmail(e.target.value);
-                }} />
-            </div>
-            <Table columns={columns} data={orderRes?.data || []} />
-            <div className='pt-3'>
-                <Pagination
-                    page={page}
-                    setPage={setPage}
-                    size={20}
-                    total={orderRes?.total || 0}
-                />
+        <div>
+            <Navbar />
+            <div className='container'>
+                <h1 className='text-center m-3'>Orders</h1>
+                <div className='m-2'>
+                    <input type="text" className='form-control' placeholder='Search' value={email} onChange={e => {
+                        setEmail(e.target.value);
+                    }} />
+                </div>
+                <Table columns={columns} data={orderRes?.data || []} />
+                <div className='pt-3'>
+                    <Pagination
+                        page={page}
+                        setPage={setPage}
+                        size={20}
+                        total={orderRes?.total || 0}
+                    />
+                </div>
             </div>
         </div>
     )

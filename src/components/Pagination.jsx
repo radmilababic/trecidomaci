@@ -9,15 +9,15 @@ export default function Pagination({
     const totalPages = Math.ceil(total / size);
     return (
         <nav aria-label="Page navigation example">
-            <ul class="pagination">
+            <ul className="pagination">
                 <li onClick={() => {
                     setPage(prev => Math.max(1, prev - 1))
-                }} class="page-item">
-                    <div class="page-link">
+                }} className="page-item">
+                    <div className="page-link">
                         <span aria-hidden="true">&laquo;</span>
                     </div>
                 </li>
-                <div class="pagination" style={{
+                <div className="pagination" style={{
                     overflowX: 'auto'
                 }}>
                     {
@@ -25,7 +25,7 @@ export default function Pagination({
                             return (
                                 <li onClick={() => {
                                     setPage(index + 1)
-                                }} class={`page-item ${index === page - 1 ? 'active' : ''}`} key={index}>
+                                }} className={`page-item ${index === page - 1 ? 'active' : ''}`} key={index}>
                                     <div className='page-link'>
                                         {index + 1}
                                     </div>
@@ -36,8 +36,8 @@ export default function Pagination({
                 </div>
                 <li onClick={() => {
                     setPage(prev => Math.min(prev + 1, totalPages))
-                }} class="page-item">
-                    <div class="page-link">
+                }} className="page-item">
+                    <div className="page-link">
                         <span aria-hidden="true">&raquo;</span>
                     </div>
                 </li>
